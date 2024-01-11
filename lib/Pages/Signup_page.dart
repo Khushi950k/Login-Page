@@ -25,7 +25,8 @@ class _SignUpState extends State<SignUp> {
       UserCredential? userCredential;
       try{
         userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>
+              HomeScreen(email: email, password: password, confirmpassword: confirmpassword)));
 
         }).then((value){
           FirebaseFirestore.instance.collection("Users").doc(email).set({
