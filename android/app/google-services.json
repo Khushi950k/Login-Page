@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "124109291602",
+    "project_id": "loginpage-eae84",
+    "storage_bucket": "loginpage-eae84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124109291602:android:cba3018f1f5c5c7a0d5f8b",
+        "android_client_info": {
+          "package_name": "com.example.firebase_test_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnSAOsmk2q5hKi_Cd_53cIIFpkmYMLexM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
