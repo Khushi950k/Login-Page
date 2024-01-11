@@ -17,15 +17,16 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordcontroller = TextEditingController();
   TextEditingController confirmpasswordcontroller = TextEditingController();
 
-  SignUp(String email,String password)async{
-    if(email=="" && password==""){
+  SignUp(String email,String password, String confirmpassword)async{
+    if(email=="" && password=="" && confirmpassword==""){
       return log("Enter Required Field's");
     }
     else{
       UserCredential? userCredential;
       try{
-        userCredential=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then((value){
-          log("User Created");
+        userCredential=await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+
         }).then((value){
           FirebaseFirestore.instance.collection("Users").doc(email).set({
             "Email":email
@@ -55,8 +56,9 @@ class _SignUpState extends State<SignUp> {
           UiHelper.CustomTextField(confirmpasswordcontroller, "Enter Confirm password", Icons.password, true),
           SizedBox(height: 10,),
           ElevatedButton(onPressed: (){
-            SignUp(emailcontroller.text.toString(), passwordcontroller.text.toString());
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+            SignUp(emailcontroller.text.toString(), passwordcontroller.text.toString(),
+                confirmpasswordcontroller.text.toString());
+           // Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
           }, child: Text("Sign Up", style:TextStyle(color: Colors.white),),
             style: ButtonStyle(backgroundColor:MaterialStatePropertyAll<Color>(Colors.blue),
             ),
